@@ -5,3 +5,5 @@ drf-yasg
 django-environ
 mysqlclient
 celery
+psycopg2-binary
+requests
