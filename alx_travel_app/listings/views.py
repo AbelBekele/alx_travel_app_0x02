@@ -158,8 +158,8 @@ class PaymentViewSet(viewsets.ModelViewSet):
             response_data = response.json()
 
             if response.status_code == 200 and response_data.get('status') == 'success':
-                # Update payment status to "completed" upon successful verification
-                payment.status = 'completed'
+                # Update payment status to "verified" upon successful verification
+                payment.status = 'verified'
                 payment.save()
 
                 # Update the booking status

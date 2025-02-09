@@ -58,6 +58,7 @@ class Payment(models.Model):
     PAYMENT_STATUS_CHOICES = [
         ('pending', 'Pending'),
         ('completed', 'Completed'),
+        ('verified', 'Verified'),
         ('failed', 'Failed'),
     ]
 
