@@ -3,7 +3,7 @@ djangorestframework
 django-cors-headers
 drf-yasg
 django-environ
-mysqlclient
 celery
 psycopg2-binary
 requests
+pyngrok

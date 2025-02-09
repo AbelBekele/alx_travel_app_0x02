@@ -4,19 +4,12 @@ from django.conf import settings
 
 @shared_task
 def send_booking_confirmation_email(booking_id, user_email, listing_title):
-    """
-    Send a booking confirmation email to the user
-    """
     subject = f'Booking Confirmation - {listing_title}'
-    message = f'''
-    Thank you for your booking!
-    
-    Booking Details:
-    - Booking ID: {booking_id}
-    - Property: {listing_title}
-    
-    We hope you enjoy your stay!
-    '''
+    message = (
+        f"Thank you for your booking!\n\n"
+        f"Booking Details:\n- Booking ID: {booking_id}\n- Property: {listing_title}\n\n"
+        "We hope you enjoy your stay!"
+    )
     
     send_mail(
         subject=subject,
@@ -26,4 +19,4 @@ def send_booking_confirmation_email(booking_id, user_email, listing_title):
         fail_silently=False,
     )
     
-    return f"Confirmation email sent for booking {booking_id}" 
+    return f"Confirmation email sent for booking {booking_id}"

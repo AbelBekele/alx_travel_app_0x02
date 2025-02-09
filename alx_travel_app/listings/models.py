@@ -61,10 +61,10 @@ class Payment(models.Model):
         ('failed', 'Failed'),
     ]
 
-    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='payments')
+    booking = models.ForeignKey('Booking', on_delete=models.CASCADE, related_name='payments')
     reference = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    currency = models.CharField(max_length=3, default='ETB')  # Ethiopian Birr
+    currency = models.CharField(max_length=3, default='ETB')
     status = models.CharField(max_length=20, choices=PAYMENT_STATUS_CHOICES, default='pending')
     transaction_id = models.CharField(max_length=255, blank=True, null=True)
     payment_url = models.URLField(max_length=500, blank=True, null=True)
@@ -73,6 +73,3 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment {self.reference} - {self.status}"
-
-    class Meta:
-        ordering = ['-created_at']
